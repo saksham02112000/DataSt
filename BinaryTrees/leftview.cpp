@@ -33,12 +33,9 @@ void rightview(Node* root)
                 q.push(node->left);
             if (node->right != NULL)
                 q.push(node->right);
-            // if (q.front() == NULL)
-            // {
-            //     cout << node->data << " ";
-            // }
         }
-        else {if (!q.empty())
+        else {
+        if (!q.empty())
         {
             // cout<<node->data<<" ";
             q.push(NULL);
