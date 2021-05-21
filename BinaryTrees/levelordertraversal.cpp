@@ -4,8 +4,8 @@ class Node
 {
 public:
     int data;
-    Node* left;
-    Node* right;
+    Node *left;
+    Node *right;
     Node(int val)
     {
         data = val;
@@ -14,41 +14,44 @@ public:
     }
 };
 
-void rightview(Node* root)
+void levelwise(Node *root)
 {
     if (root == NULL)
     {
         return;
     }
-    queue<Node*> q;
+    queue<Node *> q;
     q.push(root);
     q.push(NULL);
+    //    cout<<root->data;
     while (!q.empty())
     {
-        Node* node = q.front();
+        Node *node = q.front();
         q.pop();
         if (node != NULL)
         {
+            cout << node->data << " ";
             if (node->left != NULL)
-                q.push(node->left);
-            if (node->right != NULL)
-                q.push(node->right);
-            if (q.front() == NULL)
             {
-                cout << node->data << " ";
+                q.push(node->left);
+                //                cout<<node->left;
+            }
+            if (node->right != NULL)
+            {
+                q.push(node->right);
+                //                cout<<node->right;
             }
         }
         else if (!q.empty())
         {
-            // cout<<node->data<<" ";
-            q.push(NULL);
+            q.push(nullptr);
         }
     }
 }
 
 int main()
 {
-    Node* root = new Node(1);
+    Node *root = new Node(1);
     root->left = new Node(2);
     root->right = new Node(3);
     root->left->left = new Node(4);
@@ -57,6 +60,7 @@ int main()
     root->right->right = new Node(7);
     root->right->right->left = new Node(8);
 
-    rightview(root);
+    levelwise(root);
     return 0;
 }
+/
